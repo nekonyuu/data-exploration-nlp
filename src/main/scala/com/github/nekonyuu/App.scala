@@ -9,7 +9,7 @@ object App {
   def main(args: Array[String]): Unit = {
     val spark = SparkSession.builder.
       master("local")
-      .appName("example")
+      .appName("data-exploration-nlp")
       .getOrCreate()
 
     import spark.implicits._
@@ -30,7 +30,7 @@ object App {
       .withColumn("id", monotonically_increasing_id())
       .orderBy("id")
 
-    globalData.sample(0.1)
+    println(globalData.sample(0.1))
   }
 
 }
